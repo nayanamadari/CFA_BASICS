@@ -1,0 +1,659 @@
+ubuntu@ip-10-0-0-237:~$ sudo mysql -u root -p 
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.31-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> show databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show databases' at line 2
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.05 sec)
+
+mysql> exit
+Bye
+ubuntu@ip-10-0-0-237:~$ ls
+basic-php-website
+ubuntu@ip-10-0-0-237:~$ pwd
+/home/ubuntu
+ubuntu@ip-10-0-0-237:~$ cd basic-php-website/
+ubuntu@ip-10-0-0-237:~/basic-php-website$ ls
+Dockerfile  Old_Dockerfile  README.md  bookalbum_deployment.yaml  bookalbum_service.yaml  catalog.php  css  details.php  img  inc  index.php  suggest.php
+ubuntu@ip-10-0-0-237:~/basic-php-website$ cd /var/www/html
+ubuntu@ip-10-0-0-237:/var/www/html$ ls
+index.html
+ubuntu@ip-10-0-0-237:/var/www/html$ cd basic-php-website/
+-bash: cd: basic-php-website/: No such file or directory
+ubuntu@ip-10-0-0-237:/var/www/html$ ls
+index.html
+ubuntu@ip-10-0-0-237:/var/www/html$ cd basic-php-website/
+-bash: cd: basic-php-website/: No such file or directory
+ubuntu@ip-10-0-0-237:/var/www/html$ cd
+ubuntu@ip-10-0-0-237:~$ cd basic-php-website/
+ubuntu@ip-10-0-0-237:~/basic-php-website$ ls
+Dockerfile  Old_Dockerfile  README.md  bookalbum_deployment.yaml  bookalbum_service.yaml  catalog.php  css  details.php  img  inc  index.php  suggest.php
+ubuntu@ip-10-0-0-237:~/basic-php-website$ suco cp -rf * /var/www/html
+Command 'suco' not found, did you mean:
+  command 'sumo' from deb sumo (1.12.0+dfsg1-1)
+  command 'sudo' from deb sudo (1.9.9-1ubuntu2.1)
+  command 'sudo' from deb sudo-ldap (1.9.9-1ubuntu2.1)
+  command 'suck' from deb suck (4.3.4-1build1)
+  command 'syco' from deb emboss (6.6.0+dfsg-11ubuntu1)
+Try: sudo apt install <deb name>
+ubuntu@ip-10-0-0-237:~/basic-php-website$ sudo cp -rf * /var/www/html
+ubuntu@ip-10-0-0-237:~/basic-php-website$ ls
+Dockerfile  Old_Dockerfile  README.md  bookalbum_deployment.yaml  bookalbum_service.yaml  catalog.php  css  details.php  img  inc  index.php  suggest.php
+ubuntu@ip-10-0-0-237:~/basic-php-website$ cd
+ubuntu@ip-10-0-0-237:~$ git clone https://github.com/sreepathysois/phpmysql-app.git
+Cloning into 'phpmysql-app'...
+remote: Enumerating objects: 321, done.
+remote: Counting objects: 100% (33/33), done.
+remote: Compressing objects: 100% (27/27), done.
+remote: Total 321 (delta 19), reused 5 (delta 5), pack-reused 288
+Receiving objects: 100% (321/321), 13.80 MiB | 32.85 MiB/s, done.
+Resolving deltas: 100% (58/58), done.
+ubuntu@ip-10-0-0-237:~$ ls
+basic-php-website  phpmysql-app
+ubuntu@ip-10-0-0-237:~$ cd phpmysql-app/
+ubuntu@ip-10-0-0-237:~/phpmysql-app$ ls
+Jenkinsfile  docker-compose.yml          ecommerce_mysql_db_deployment.yaml  ecommerce_php_app_deployment.yaml  php
+README.md    docker-compose_updated.yml  ecommerce_mysql_db_service.yaml     ecommerce_php_app_service.yaml
+ubuntu@ip-10-0-0-237:~/phpmysql-app$ cd php
+ubuntu@ip-10-0-0-237:~/phpmysql-app/php$ ls
+online-shopping-system
+ubuntu@ip-10-0-0-237:~/phpmysql-app/php$ cd online-shopping-system/
+ubuntu@ip-10-0-0-237:~/phpmysql-app/php/online-shopping-system$ ls
+Dockerfile                _config.yml  cart.php              css        fonts           img        login_form.php   payment_success.php  register_form.php
+Dockerfile_update_webapp  action.php   checkout.php          database   footer.php      index.php  logout.php       product.php          store.php
+LICENSE                   admin        checkout_process.php  db.php     header.php      js         newslettter.php  product_images
+README.md                 body.php     config.php            error.php  homeaction.php  login.php  offersmail.php   register.php
+ubuntu@ip-10-0-0-237:~/phpmysql-app/php/online-shopping-system$ cd
+ubuntu@ip-10-0-0-237:~$ cd /var/www/html
+ubuntu@ip-10-0-0-237:/var/www/html$ sudo mkdir ecommerce
+ubuntu@ip-10-0-0-237:/var/www/html$ cd ecommerce/
+ubuntu@ip-10-0-0-237:/var/www/html/ecommerce$ sudo cp -rf home/ubuntu/phpmysql-app/php/online-shopping-system/ *
+cp: cannot stat 'home/ubuntu/phpmysql-app/php/online-shopping-system/': No such file or directory
+ubuntu@ip-10-0-0-237:/var/www/html/ecommerce$ sudo cp -rf /home/ubuntu/phpmysql-app/php/online-shopping-system/* .
+ubuntu@ip-10-0-0-237:/var/www/html/ecommerce$ sudo vi /etc/apache/sites-available/000-default-conf
+ubuntu@ip-10-0-0-237:/var/www/html/ecommerce$ cd 
+ubuntu@ip-10-0-0-237:~$ sudo cp -rf phpmysql-app/* /var/www/html/.
+ubuntu@ip-10-0-0-237:~$ sudo vi /etc/apache2/mods-enabled/dir.conf
+ubuntu@ip-10-0-0-237:~$ sudo systemctl restart apache2
+ubuntu@ip-10-0-0-237:~$ sudo apt-get install mysql-client
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+mysql-client is already the newest version (8.0.31-0ubuntu0.22.04.1).
+0 upgraded, 0 newly installed, 0 to remove and 26 not upgraded.
+ubuntu@ip-10-0-0-237:~$ sudo mysql -u msis -p lab-password
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'msis'@'localhost' (using password: YES)
+ubuntu@ip-10-0-0-237:~$ sudo mysql -u msis -p 
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'msis'@'localhost' (using password: YES)
+ubuntu@ip-10-0-0-237:~$ sudo mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.31-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> exit
+Bye
+ubuntu@ip-10-0-0-237:~$ sudo mysql -h database-1.cddd05btjupi.us-east-1.rds.amazonaws.com -u msis -p
+Enter password: 
+ERROR 2005 (HY000): Unknown MySQL server host 'database-1.cddd05btjupi.us-east-1.rds.amazonaws.com' (-2)
+ubuntu@ip-10-0-0-237:~$ cd /var/www/html/
+ubuntu@ip-10-0-0-237:/var/www/html$ ls
+Dockerfile      bookalbum_deployment.yaml  details.php                 ecommerce_mysql_db_deployment.yaml  img         php
+Jenkinsfile     bookalbum_service.yaml     docker-compose.yml          ecommerce_mysql_db_service.yaml     inc         suggest.php
+Old_Dockerfile  catalog.php                docker-compose_updated.yml  ecommerce_php_app_deployment.yaml   index.html
+README.md       css                        ecommerce                   ecommerce_php_app_service.yaml      index.php
+ubuntu@ip-10-0-0-237:/var/www/html$ sudo rm -rf *
+ubuntu@ip-10-0-0-237:/var/www/html$ sudo cp -rf /home/ubuntu/phpmysql-app/php/online-shopping-system/* .
+ubuntu@ip-10-0-0-237:/var/www/html$ ls
+Dockerfile                _config.yml  cart.php              css        fonts           img        login_form.php   payment_success.php  register_form.php
+Dockerfile_update_webapp  action.php   checkout.php          database   footer.php      index.php  logout.php       product.php          store.php
+LICENSE                   admin        checkout_process.php  db.php     header.php      js         newslettter.php  product_images
+README.md                 body.php     config.php            error.php  homeaction.php  login.php  offersmail.php   register.php
+ubuntu@ip-10-0-0-237:/var/www/html$ ls
+Dockerfile                _config.yml  cart.php              css        fonts           img        login_form.php   payment_success.php  register_form.php
+Dockerfile_update_webapp  action.php   checkout.php          database   footer.php      index.php  logout.php       product.php          store.php
+LICENSE                   admin        checkout_process.php  db.php     header.php      js         newslettter.php  product_images
+README.md                 body.php     config.php            error.php  homeaction.php  login.php  offersmail.php   register.php
+ubuntu@ip-10-0-0-237:/var/www/html$ sudo systemctl restart apache2
+ubuntu@ip-10-0-0-237:/var/www/html$ cd database/
+ubuntu@ip-10-0-0-237:/var/www/html/database$ /var/www/html/database$ sudo mysql -h database-1.cddd05btjupi.us-east-1.rds.amazonaws.com -u msis -p
+-bash: /var/www/html/database$: No such file or directory
+ubuntu@ip-10-0-0-237:/var/www/html/database$ ls
+Dockerfile_db  onlineshop.sql
+ubuntu@ip-10-0-0-237:/var/www/html/database$ sudo mysql -h database-1.cddd05btjupi.us-east-1.rds.amazonaws.com -u msis -p
+Enter password: 
+ERROR 2005 (HY000): Unknown MySQL server host 'database-1.cddd05btjupi.us-east-1.rds.amazonaws.com' (-2)
+ubuntu@ip-10-0-0-237:/var/www/html/database$ . sql
+-bash: sql: No such file or directory
+ubuntu@ip-10-0-0-237:/var/www/html/database$ .sql
+Command '.sql' not found, did you mean:
+  command 'psql' from deb postgresql-client-common (238)
+  command 'isql' from deb unixodbc (2.3.9-5)
+  command 'tsql' from deb freetds-bin (1.3.6-1)
+  command 'asql' from deb asql (1.6-1.1)
+  command 'sql' from deb parallel (20210822+ds-2)
+  command 'osql' from deb freetds-bin (1.3.6-1)
+Try: sudo apt install <deb name>
+ubuntu@ip-10-0-0-237:/var/www/html/database$ sql
+Command 'sql' not found, but can be installed with:
+sudo apt install parallel
+ubuntu@ip-10-0-0-237:/var/www/html/database$ sudo apt install parallel
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  libsensors-config libsensors5 sysstat
+Suggested packages:
+  lm-sensors ash csh fish ksh tcsh zsh isag
+The following NEW packages will be installed:
+  libsensors-config libsensors5 parallel sysstat
+0 upgraded, 4 newly installed, 0 to remove and 26 not upgraded.
+Need to get 2465 kB of archives.
+After this operation, 4662 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libsensors-config all 1:3.6.0-7ubuntu1 [5274 B]
+Get:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libsensors5 amd64 1:3.6.0-7ubuntu1 [26.3 kB]
+Get:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 sysstat amd64 12.5.2-2ubuntu0.1 [487 kB]
+Get:4 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy/universe amd64 parallel all 20210822+ds-2 [1947 kB]
+Fetched 2465 kB in 0s (31.3 MB/s)
+Preconfiguring packages ...
+Selecting previously unselected package libsensors-config.
+(Reading database ... 65437 files and directories currently installed.)
+Preparing to unpack .../libsensors-config_1%3a3.6.0-7ubuntu1_all.deb ...
+Unpacking libsensors-config (1:3.6.0-7ubuntu1) ...
+Selecting previously unselected package libsensors5:amd64.
+Preparing to unpack .../libsensors5_1%3a3.6.0-7ubuntu1_amd64.deb ...
+Unpacking libsensors5:amd64 (1:3.6.0-7ubuntu1) ...
+Selecting previously unselected package sysstat.
+Preparing to unpack .../sysstat_12.5.2-2ubuntu0.1_amd64.deb ...
+Unpacking sysstat (12.5.2-2ubuntu0.1) ...
+Selecting previously unselected package parallel.
+Preparing to unpack .../parallel_20210822+ds-2_all.deb ...
+Adding 'diversion of /usr/bin/parallel to /usr/bin/parallel.moreutils by parallel'
+Adding 'diversion of /usr/share/man/man1/parallel.1.gz to /usr/share/man/man1/parallel.moreutils.1.gz by parallel'
+Unpacking parallel (20210822+ds-2) ...
+Setting up libsensors-config (1:3.6.0-7ubuntu1) ...
+Setting up libsensors5:amd64 (1:3.6.0-7ubuntu1) ...
+Setting up sysstat (12.5.2-2ubuntu0.1) ...
+
+Creating config file /etc/default/sysstat with new version
+update-alternatives: using /usr/bin/sar.sysstat to provide /usr/bin/sar (sar) in auto mode
+Created symlink /etc/systemd/system/sysstat.service.wants/sysstat-collect.timer → /lib/systemd/system/sysstat-collect.timer.
+Created symlink /etc/systemd/system/sysstat.service.wants/sysstat-summary.timer → /lib/systemd/system/sysstat-summary.timer.
+Created symlink /etc/systemd/system/multi-user.target.wants/sysstat.service → /lib/systemd/system/sysstat.service.
+Setting up parallel (20210822+ds-2) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.1) ...
+Scanning processes...                                                                                                                                                   
+Scanning linux images...                                                                                                                                                
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+ubuntu@ip-10-0-0-237:/var/www/html/database$ cd
+ubuntu@ip-10-0-0-237:~$ sudo systemctl restart apache2
+ubuntu@ip-10-0-0-237:~$ sudo mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 8.0.31-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database ecomm;
+Query OK, 1 row affected (0.13 sec)
+
+mysql> source online.sql;
+ERROR: 
+Failed to open file 'online.sql', error: 2
+mysql> source onlineshop.sql;
+ERROR: 
+Failed to open file 'onlineshop.sql', error: 2
+mysql> exit
+Bye
+ubuntu@ip-10-0-0-237:~$ cd database/
+-bash: cd: database/: No such file or directory
+ubuntu@ip-10-0-0-237:~$ cd /var/www/html/database
+ubuntu@ip-10-0-0-237:/var/www/html/database$ ls
+Dockerfile_db  onlineshop.sql
+ubuntu@ip-10-0-0-237:/var/www/html/database$ vi onlineshop.sql 
+ubuntu@ip-10-0-0-237:/var/www/html/database$ sudo mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.0.31-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use ecomm
+Database changed
+mysql> source onlineshop.sql
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.11 sec)
+
+Query OK, 0 rows affected, 1 warning (0.30 sec)
+
+Query OK, 1 row affected (0.02 sec)
+
+Query OK, 0 rows affected, 1 warning (0.12 sec)
+
+Query OK, 6 rows affected (0.00 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected, 4 warnings (0.13 sec)
+
+Query OK, 17 rows affected (0.00 sec)
+Records: 17  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected, 1 warning (0.09 sec)
+
+Query OK, 7 rows affected (0.00 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected, 1 warning (0.06 sec)
+
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected, 1 warning (0.06 sec)
+
+Query OK, 0 rows affected, 4 warnings (0.08 sec)
+
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected, 6 warnings (0.10 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 0 rows affected, 5 warnings (0.10 sec)
+
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected, 4 warnings (0.12 sec)
+
+Query OK, 71 rows affected (0.00 sec)
+Records: 71  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected, 1 warning (0.07 sec)
+
+Query OK, 9 rows affected, 1 warning (0.00 sec)
+Records: 9  Duplicates: 0  Warnings: 1
+
+Query OK, 0 rows affected (0.08 sec)
+
+Query OK, 0 rows affected, 1 warning (0.13 sec)
+
+Query OK, 11 rows affected (0.01 sec)
+Records: 11  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.20 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.19 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.16 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.23 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.26 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.15 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.20 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.37 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.39 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.16 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.16 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+Query OK, 1 row affected, 1 warning (0.23 sec)
+Records: 1  Duplicates: 0  Warnings: 1
+
+Query OK, 6 rows affected, 1 warning (0.18 sec)
+Records: 6  Duplicates: 0  Warnings: 1
+
+Query OK, 17 rows affected, 1 warning (0.11 sec)
+Records: 17  Duplicates: 0  Warnings: 1
+
+Query OK, 7 rows affected, 1 warning (0.10 sec)
+Records: 7  Duplicates: 0  Warnings: 1
+
+Query OK, 3 rows affected, 1 warning (0.07 sec)
+Records: 3  Duplicates: 0  Warnings: 1
+
+Query OK, 0 rows affected, 1 warning (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+Query OK, 2 rows affected, 1 warning (0.08 sec)
+Records: 2  Duplicates: 0  Warnings: 1
+
+Query OK, 1 row affected, 1 warning (0.08 sec)
+Records: 1  Duplicates: 0  Warnings: 1
+
+Query OK, 3 rows affected, 1 warning (0.09 sec)
+Records: 3  Duplicates: 0  Warnings: 1
+
+Query OK, 71 rows affected, 1 warning (0.08 sec)
+Records: 71  Duplicates: 0  Warnings: 1
+
+Query OK, 9 rows affected, 1 warning (0.09 sec)
+Records: 9  Duplicates: 0  Warnings: 1
+
+Query OK, 11 rows affected, 1 warning (0.10 sec)
+Records: 11  Duplicates: 0  Warnings: 1
+
+Query OK, 1 row affected (0.17 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+Query OK, 3 rows affected (0.11 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> exit 
+Bye
+ubuntu@ip-10-0-0-237:/var/www/html/database$ cd 
+ubuntu@ip-10-0-0-237:~$ sudo systemctl restart apache2
+ubuntu@ip-10-0-0-237:~$ cd /var/www/html/database
+ubuntu@ip-10-0-0-237:/var/www/html/database$ sudo mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 8.0.31-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE USER "msis'@'localhost" IDENTIFIED BY "msis@123";
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> GRANT ALL PRIVILAGES ON *.* TO "msis'@'localhost";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIVILAGES ON *.* TO "msis'@'localhost"' at line 1
+mysql> GRANT ALL PRIVILAGES ON ecomm..* TO "msis'@'localhost";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIVILAGES ON ecomm..* TO "msis'@'localhost"' at line 1
+mysql> GRANT ALL PRIVILAGES ON ecomm.* TO "msis'@'localhost";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIVILAGES ON ecomm.* TO "msis'@'localhost"' at line 1
+mysql> GRANT ALL PRIVILAGES ON ecomm .* TO "msis'@'localhost";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIVILAGES ON ecomm .* TO "msis'@'localhost"' at line 1
+mysql> GRANT ALL PRIVILAGES ON ecomm . * TO "msis'@'localhost";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIVILAGES ON ecomm . * TO "msis'@'localhost"' at line 1
+mysql> GRANT ALL PRIVILAGES ON ecomm . * TO 'msis'@'localhost';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIVILAGES ON ecomm . * TO 'msis'@'localhost'' at line 1
+mysql> GRANT ALL PRIVILAGES ON ecomm .* TO 'msis'@'localhost';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIVILAGES ON ecomm .* TO 'msis'@'localhost'' at line 1
+mysql> GRANT ALL PRIVILAGES ON ecomm . * TO 'msis'@'localhost';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIVILAGES ON ecomm . * TO 'msis'@'localhost'' at line 1
+mysql> GRANT ALL PRIVILEGES ON ecomm .* TO 'msis'@'localhost';
+ERROR 1410 (42000): You are not allowed to create a user with GRANT
+mysql> GRANT ALL PRIVILEGES ON ecomm . * TO 'msis'@'localhost';
+ERROR 1410 (42000): You are not allowed to create a user with GRANT
+mysql> grant all privileges on ecomm . * to 'msis'@'localhost';
+ERROR 1410 (42000): You are not allowed to create a user with GRANT
+mysql> grant all privleges on ecomm . * to 'msis'@'localhost';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'privleges on ecomm . * to 'msis'@'localhost'' at line 1
+mysql> grant all privileges on ecomm . * to 'msis'@'localhost';
+ERROR 1410 (42000): You are not allowed to create a user with GRANT
+mysql> grant all privilege on ecomm . * to 'msis'@'localhost';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'privilege on ecomm . * to 'msis'@'localhost'' at line 1
+mysql> grant all privileges on ecomm .* to 'msis'@'localhost';
+ERROR 1410 (42000): You are not allowed to create a user with GRANT
+mysql> grant all privileges on ecomm.* to 'msis'@'localhost';
+ERROR 1410 (42000): You are not allowed to create a user with GRANT
+mysql> grant all privileges on ecomm.* to "msis'@'localhost";
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> ALTER USER "msis'@'localhost" IDENTIFIED WITH mysql_native_password BY "msis@123";
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> exit
+Bye
+ubuntu@ip-10-0-0-237:/var/www/html/database$ mysql -u msis -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'msis'@'localhost' (using password: YES)
+ubuntu@ip-10-0-0-237:/var/www/html/database$ sudo mysql -u msis -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'msis'@'localhost' (using password: YES)
+ubuntu@ip-10-0-0-237:/var/www/html/database$ sudo mysql -u msis -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'msis'@'localhost' (using password: YES)
+ubuntu@ip-10-0-0-237:/var/www/html/database$ sudo vi db.php
+ubuntu@ip-10-0-0-237:/var/www/html/database$ cd /var/www/html
+ubuntu@ip-10-0-0-237:/var/www/html$ ls
+Dockerfile                _config.yml  cart.php              css        fonts           img        login_form.php   payment_success.php  register_form.php
+Dockerfile_update_webapp  action.php   checkout.php          database   footer.php      index.php  logout.php       product.php          store.php
+LICENSE                   admin        checkout_process.php  db.php     header.php      js         newslettter.php  product_images
+README.md                 body.php     config.php            error.php  homeaction.php  login.php  offersmail.php   register.php
+ubuntu@ip-10-0-0-237:/var/www/html$ cd ecom
+-bash: cd: ecom: No such file or directory
+ubuntu@ip-10-0-0-237:/var/www/html$ ls
+Dockerfile                _config.yml  cart.php              css        fonts           img        login_form.php   payment_success.php  register_form.php
+Dockerfile_update_webapp  action.php   checkout.php          database   footer.php      index.php  logout.php       product.php          store.php
+LICENSE                   admin        checkout_process.php  db.php     header.php      js         newslettter.php  product_images
+README.md                 body.php     config.php            error.php  homeaction.php  login.php  offersmail.php   register.php
+ubuntu@ip-10-0-0-237:/var/www/html$ sudo mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.31-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show grants for 'msis'@'localhost';
+ERROR 1141 (42000): There is no such grant defined for user 'msis' on host 'localhost'
+mysql> show grants for "msis"@'localhost;
+    '> ;
+    '> exit
+    '> 
+[1]+  Stopped                 sudo mysql -u root -p
+ubuntu@ip-10-0-0-237:/var/www/html$ sudo mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 19
+Server version: 8.0.31-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> grant all privileges on ecomm.* to "msis'@'localhost";
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show grants for "msis'@'localhost";
++-------------------------------------------------------------+
+| Grants for msis'@'localhost@%                               |
++-------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `msis'@'localhost`@`%`                |
+| GRANT ALL PRIVILEGES ON `ecomm`.* TO `msis'@'localhost`@`%` |
++-------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> create user 'msis1'@'localhost' identified by 'Msis@123';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> grant all privileges on ecomm.* to 'msis1'@'localhost';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show grants for 'msis'@'localhost';
+ERROR 1141 (42000): There is no such grant defined for user 'msis' on host 'localhost'
+mysql> show grants for 'msis1'@'localhost';
++----------------------------------------------------------+
+| Grants for msis1@localhost                               |
++----------------------------------------------------------+
+| GRANT USAGE ON *.* TO `msis1`@`localhost`                |
+| GRANT ALL PRIVILEGES ON `ecomm`.* TO `msis1`@`localhost` |
++----------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> exit
+Bye
+ubuntu@ip-10-0-0-237:/var/www/html$ sudo mysql -u msis1 -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 20
+Server version: 8.0.31-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| ecomm              |
+| information_schema |
+| performance_schema |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> use ecomm;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_ecomm  |
++------------------+
+| admin_info       |
+| brands           |
+| cart             |
+| categories       |
+| email_info       |
+| logs             |
+| order_products   |
+| orders           |
+| orders_info      |
+| products         |
+| user_info        |
+| user_info_backup |
++------------------+
+12 rows in set (0.00 sec)
+
+mysql> exit
+Bye
+ubuntu@ip-10-0-0-237:/var/www/html$ ls
+Dockerfile                _config.yml  cart.php              css        fonts           img        login_form.php   payment_success.php  register_form.php
+Dockerfile_update_webapp  action.php   checkout.php          database   footer.php      index.php  logout.php       product.php          store.php
+LICENSE                   admin        checkout_process.php  db.php     header.php      js         newslettter.php  product_images
+README.md                 body.php     config.php            error.php  homeaction.php  login.php  offersmail.php   register.php
+ubuntu@ip-10-0-0-237:/var/www/html$ sudo vi db.php 
+ubuntu@ip-10-0-0-237:/var/www/html$ sudo systemctl restart apache2
+ubuntu@ip-10-0-0-237:/var/www/html$ 
